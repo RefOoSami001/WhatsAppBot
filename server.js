@@ -1,3 +1,12 @@
+// Add crypto polyfill
+try {
+    console.log('Loading crypto polyfill...');
+    global.crypto = require('crypto');
+    console.log('Crypto polyfill loaded successfully');
+} catch (err) {
+    console.error('Failed to load crypto polyfill:', err);
+}
+
 const express = require('express');
 const { default: makeWASocket, DisconnectReason } = require('@whiskeysockets/baileys');
 const { Boom } = require('@hapi/boom');
