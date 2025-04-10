@@ -28,6 +28,12 @@ dotenv.config();
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://raafatsamy109:hQm3tZYWWEjNI2WS@ac-phjothd-shard-00-00.jdjy8pd.mongodb.net:27017,ac-phjothd-shard-00-01.jdjy8pd.mongodb.net:27017,ac-phjothd-shard-00-02.jdjy8pd.mongodb.net:27017/?replicaSet=atlas-12rk7b-shard-0&ssl=true&authSource=admin&retryWrites=true&w=majority&appName=Cluster0";
 console.log('Using MongoDB URI:', MONGODB_URI.substring(0, 20) + '...');
 
+// Ensure JWT_SECRET is set
+if (!process.env.JWT_SECRET) {
+    console.log('Setting default JWT_SECRET');
+    process.env.JWT_SECRET = 'whatsapp_bot_secure_jwt_secret_2024';
+}
+
 const app = express();
 const server = createServer(app);
 const io = new Server(server);
