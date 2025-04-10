@@ -15,6 +15,10 @@ const AutoReplyRule = require('./models/AutoReplyRule');
 // Load environment variables
 dotenv.config();
 
+// Add fallback for MongoDB URI
+const MONGODB_URI = process.env.MONGODB_URI || process.env.MONGO_URI || 'mongodb://localhost:27017/whatsapp-bot';
+console.log('Using MongoDB URI:', MONGODB_URI.substring(0, 20) + '...');
+
 const app = express();
 const server = createServer(app);
 const io = new Server(server);
@@ -39,7 +43,6 @@ app.use('/api/auth', authRouter);
 const sessions = new Map();
 
 // MongoDB connection
-const MONGODB_URI = process.env.MONGODB_URI;
 if (!MONGODB_URI) {
     console.error('MONGODB_URI is not defined in environment variables');
     process.exit(1);
