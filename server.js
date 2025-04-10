@@ -15,8 +15,8 @@ const AutoReplyRule = require('./models/AutoReplyRule');
 // Load environment variables
 dotenv.config();
 
-// Add fallback for MongoDB URI
-const MONGODB_URI = process.env.MONGODB_URI || process.env.MONGO_URI || 'mongodb://localhost:27017/whatsapp-bot';
+// Set the MongoDB URI directly for Render.com
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://raafatsamy109:hQm3tZYWWEjNI2WS@ac-phjothd-shard-00-00.jdjy8pd.mongodb.net:27017,ac-phjothd-shard-00-01.jdjy8pd.mongodb.net:27017,ac-phjothd-shard-00-02.jdjy8pd.mongodb.net:27017/?replicaSet=atlas-12rk7b-shard-0&ssl=true&authSource=admin&retryWrites=true&w=majority&appName=Cluster0";
 console.log('Using MongoDB URI:', MONGODB_URI.substring(0, 20) + '...');
 
 const app = express();
